@@ -1,4 +1,4 @@
-oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\pure.omp.json" | Invoke-Expression
+oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\lambda.omp.json" | Invoke-Expression;
 function Get-GitStatus { & git status -sb $args }
 New-Alias -Name s -Value Get-GitStatus -Force -Option AllScope
 function Get-GitCommit { & git commit -ev $args }
