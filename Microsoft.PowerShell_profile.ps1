@@ -1,12 +1,16 @@
 oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\lambda.omp.json" | Invoke-Expression;
-function Get-GitStatus { & git status -sb $args }
-New-Alias -Name s -Value Get-GitStatus -Force -Option AllScope
+function Get-GitStatusShort { & git status -sb $args }
+New-Alias -Name s -Value Get-GitStatusShort -Force -Option AllScope
+function Get-GitStatus { & git status $args }
+New-Alias -Name gs -Value Get-GitStatus -Force -Option AllScope
 function Get-GitCommit { & git commit -ev $args }
 New-Alias -Name c -Value Get-GitCommit -Force -Option AllScope
 function Get-GitCommitAmendNoEdit { & git commit -v --amend --no-edit $args }
 New-Alias -Name cam -Value Get-GitCommitAmendNoEdit -Force -Option AllScope
-function Get-GitAdd { & git add --all $args }
-New-Alias -Name ga -Value Get-GitAdd -Force -Option AllScope
+function Get-GitAddAll { & git add --all $args }
+New-Alias -Name ga -Value Get-GitAddAll -Force -Option AllScope
+function Get-GitAdd { & git add $args }
+New-Alias -Name gad -Value Get-GitAdd -Force -Option AllScope
 function Get-GitTree { & git log --graph --oneline --decorate $args }
 New-Alias -Name t -Value Get-GitTree -Force -Option AllScope
 function Get-GitPush { & git push $args }
