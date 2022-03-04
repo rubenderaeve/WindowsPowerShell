@@ -53,6 +53,8 @@ function Get-GitStash { & git stash $args }
 New-Alias -Name st -Value Get-GitStash -Force -Option AllScope
 function Get-GitStashPop { & git stash pop $args }
 New-Alias -Name stp -Value Get-GitStashPop -Force -Option AllScope
+function Get-GitShow { & git show $args }
+New-Alias -Name sw -Value Get-GitShow -Force -Option AllScope
 function Get-GitReset { & git reset $args }
 New-Alias -Name gr -Value Get-GitReset -Force -Option AllScope
 function Get-GitResetPatch { & git reset --patch $args }
@@ -61,5 +63,7 @@ function Get-GitResetHard { & git reset --hard $args }
 New-Alias -Name grh -Value Get-GitResetHard -Force -Option AllScope
 function Get-GitResetSoftHead { & git reset --soft HEAD~ $args }
 New-Alias -Name grsh -Value Get-GitResetSoftHead -Force -Option AllScope
+function Get-GitAddCommitAmendPushForce { & git add --all; git commit --amend --no-edit; git push -f }
+New-Alias -Name acp -Value Get-GitAddCommitAmendPushForce -Force -Option AllScope
 function Get-DotnetFormat { & dotnet format $args }
 New-Alias -Name df -Value Get-DotnetFormat -Force -Option AllScope
