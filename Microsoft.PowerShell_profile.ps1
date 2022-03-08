@@ -65,5 +65,7 @@ function Get-GitResetSoftHead { & git reset --soft HEAD~ $args }
 New-Alias -Name grsh -Value Get-GitResetSoftHead -Force -Option AllScope
 function Get-GitAddCommitAmendPushForce { & git add --all; git commit --amend --no-edit; git push -f }
 New-Alias -Name acp -Value Get-GitAddCommitAmendPushForce -Force -Option AllScope
+function Get-GitLog { & git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' $args }
+New-Alias -Name lg -Value Get-GitLog -Force -Option AllScope
 function Get-DotnetFormat { & dotnet format $args }
 New-Alias -Name df -Value Get-DotnetFormat -Force -Option AllScope
