@@ -33,6 +33,8 @@ function Get-GitBranch { & git branch $args }
 New-Alias -Name b -Value Get-GitBranch -Force -Option AllScope
 function Get-GitBranchAll { & git branch --all $args }
 New-Alias -Name gba -Value Get-GitBranchAll -Force -Option AllScope
+function Get-GitBranchDelete{ & git branch -D $args }
+New-Alias -Name gbd -Value Get-GitBranchDelete -Force -Option AllScope
 function Get-GitRemote { & git remote -v $args }
 New-Alias -Name r -Value Get-GitRemote -Force -Option AllScope
 function Get-GitCherryPick { & git cherry-pick $args }
@@ -63,6 +65,12 @@ function Get-GitResetHard { & git reset --hard $args }
 New-Alias -Name grh -Value Get-GitResetHard -Force -Option AllScope
 function Get-GitResetSoft { & git reset --soft  $args }
 New-Alias -Name grs -Value Get-GitResetSoft -Force -Option AllScope
+function Get-GitRestore { & git restore  $args }
+New-Alias -Name gres -Value Get-GitRestore -Force -Option AllScope
+function Get-GitRestoreStaged { & git restore --staged  $args }
+New-Alias -Name gress -Value Get-GitRestoreStaged -Force -Option AllScope
+function Get-GitSubModuleUpdateInite { & git submodule update --init  $args }
+New-Alias -Name gsubui -Value Get-GitSubModuleUpdateInite -Force -Option AllScope
 function Get-GitAddCommitAmendPushForce { & git add --all; git commit --amend --no-edit; git push -f }
 New-Alias -Name acp -Value Get-GitAddCommitAmendPushForce -Force -Option AllScope
 function Get-DotnetFormat { & dotnet format $args }
