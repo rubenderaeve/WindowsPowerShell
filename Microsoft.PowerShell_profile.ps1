@@ -35,6 +35,8 @@ function Get-GitBranchAll { & git branch --all $args }
 New-Alias -Name gba -Value Get-GitBranchAll -Force -Option AllScope
 function Get-GitBranchDelete{ & git branch -D $args }
 New-Alias -Name gbd -Value Get-GitBranchDelete -Force -Option AllScope
+function Get-GitFlowFeatureStart{ & git flow feature start $args }
+New-Alias -Name gfs -Value Get-GitFlowFeatureStart -Force -Option AllScope
 function Get-GitRemote { & git remote -v $args }
 New-Alias -Name r -Value Get-GitRemote -Force -Option AllScope
 function Get-GitCherryPick { & git cherry-pick $args }
