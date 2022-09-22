@@ -1,3 +1,4 @@
+#    . $PROFILE
 oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\lambda.omp.json" | Invoke-Expression;
 function Get-GitStatusShort { & git status -sb $args }
 New-Alias -Name s -Value Get-GitStatusShort -Force -Option AllScope
@@ -51,6 +52,8 @@ function Get-GitRebaseContinue { & git rebase --continue $args }
 New-Alias -Name rbc -Value Get-GitRebaseContinue -Force -Option AllScope
 function Get-GitRebaseInteractive { & git rebase -i $args }
 New-Alias -Name rbi -Value Get-GitRebaseInteractive -Force -Option AllScope
+function Get-GitRebaseInteractiveHead { & git rebase -i head~1 $args }
+New-Alias -Name rbih -Value Get-GitRebaseInteractiveHead -Force -Option AllScope
 function Get-GitRebaseOriginDevelop { & git rebase origin/develop $args }
 New-Alias -Name rbod -Value Get-GitRebaseOriginDevelop -Force -Option AllScope
 function Get-GitStash { & git stash $args }
