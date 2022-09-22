@@ -84,3 +84,5 @@ function Get-GitLog { & git log --graph --abbrev-commit --decorate --format=form
 New-Alias -Name lg -Value Get-GitLog -Force -Option AllScope
 
 Set-PSReadlineOption -EditMode vi
+
+# To reload the profile: . $PROFILE
