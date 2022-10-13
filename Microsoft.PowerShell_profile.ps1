@@ -1,5 +1,8 @@
 #    . $PROFILE
+Import-Module PSReadLine
+
 oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\lambda.omp.json" | Invoke-Expression;
+
 function Get-GitStatusShort { & git status -sb $args }
 New-Alias -Name s -Value Get-GitStatusShort -Force -Option AllScope
 function Get-GitStatus { & git status $args }
@@ -70,6 +73,8 @@ function Get-GitResetHard { & git reset --hard $args }
 New-Alias -Name grh -Value Get-GitResetHard -Force -Option AllScope
 function Get-GitResetSoft { & git reset --soft  $args }
 New-Alias -Name grs -Value Get-GitResetSoft -Force -Option AllScope
+function Get-GitResetSoftHead { & git reset --soft head~1  $args }
+New-Alias -Name grsh -Value Get-GitResetSoftHead -Force -Option AllScope
 function Get-GitRestore { & git restore  $args }
 New-Alias -Name gres -Value Get-GitRestore -Force -Option AllScope
 function Get-GitRestoreStaged { & git restore --staged  $args }
@@ -84,5 +89,42 @@ function Get-GitLog { & git log --graph --abbrev-commit --decorate --format=form
 New-Alias -Name lg -Value Get-GitLog -Force -Option AllScope
 
 Set-PSReadlineOption -EditMode vi
+
+# https://techcommunity.microsoft.com/t5/itops-talk-blog/autocomplete-in-powershell/ba-p/2604524
+Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
+
+# https://learn.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete?WT.mc_id=modinfra-35653-salean#powershell
+# PowerShell parameter completion shim for the dotnet CLI
+Register-ArgumentCompleter -Native -CommandName dotnet -ScriptBlock {
+     param($commandName, $wordToComplete, $cursorPosition)
+         dotnet complete --position $cursorPosition "$wordToComplete" | ForEach-Object {
+            [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_)
+         }
+ }
+
+# https://devblogs.microsoft.com/powershell/announcing-psreadline-2-1-with-predictive-intellisense/
+# run: Install-Module PSReadLine -RequiredVersion 2.1.0
+Set-PSReadLineOption -PredictionSource History
+Set-PSReadLineOption -PredictionViewStyle ListView
+Set-PSReadLineOption -Colors @{ InlinePrediction = "$([char]0x1b)[36;7;238m"}
+
+
+
+# Sometimes you enter a command but realize you forgot to do something else first.
+# This binding will let you save that command in the history so you can recall it,
+# but it doesn't actually execute.  It also clears the line with RevertLine so the
+# undo stack is reset - though redo will still reconstruct the command line.
+Set-PSReadLineKeyHandler -Key Alt+w `
+                         -BriefDescription SaveInHistory `
+                         -LongDescription "Save current line in history but do not execute" `
+                         -ScriptBlock {
+    param($key, $arg)
+
+    $line = $null
+    $cursor = $null
+    [Microsoft.PowerShell.PSConsoleReadLine]::GetBufferState([ref]$line, [ref]$cursor)
+    [Microsoft.PowerShell.PSConsoleReadLine]::AddToHistory($line)
+    [Microsoft.PowerShell.PSConsoleReadLine]::RevertLine()
+}
 
 # To reload the profile: . $PROFILE
