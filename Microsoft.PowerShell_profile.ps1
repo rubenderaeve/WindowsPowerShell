@@ -1,5 +1,6 @@
 #    . $PROFILE
 Import-Module PSReadLine
+Import-Module -Name Terminal-Icons
 
 oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\lambda.omp.json" | Invoke-Expression;
 
