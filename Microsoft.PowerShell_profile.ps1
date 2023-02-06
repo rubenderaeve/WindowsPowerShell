@@ -41,6 +41,8 @@ function Get-GitBranchAll { & git branch --all $args }
 New-Alias -Name gba -Value Get-GitBranchAll -Force -Option AllScope
 function Get-GitBranchDelete{ & git branch -D $args }
 New-Alias -Name gbd -Value Get-GitBranchDelete -Force -Option AllScope
+function Get-GitBranchDeleteString{ & git branch | findstr $args | Foreach { git branch -d $_.trim() } }
+New-Alias -Name bd -Value Get-GitBranchDeleteString -Force -Option AllScope
 function Get-GitFlowFeatureStart{ & git flow feature start $args }
 New-Alias -Name gfs -Value Get-GitFlowFeatureStart -Force -Option AllScope
 function Get-GitRemote { & git remote -v $args }
