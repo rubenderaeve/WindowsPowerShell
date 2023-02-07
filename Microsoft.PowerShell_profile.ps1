@@ -93,6 +93,7 @@ function Get-GitLog { & git log --graph --abbrev-commit --decorate --format=form
 New-Alias -Name lg -Value Get-GitLog -Force -Option AllScope
 
 Set-PSReadlineOption -EditMode vi
+Set-PSReadlineOption -ViModeIndicator Prompt
 
 # https://techcommunity.microsoft.com/t5/itops-talk-blog/autocomplete-in-powershell/ba-p/2604524
 Set-PSReadlineKeyHandler -Key Tab -Function MenuComplete
