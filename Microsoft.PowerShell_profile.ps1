@@ -29,7 +29,7 @@ function Get-GitPull { & git pull $args }
 New-Alias -Name pl -Value Get-GitPull -Force -Option AllScope
 function Get-GitFetch { & git fetch $args }
 New-Alias -Name f -Value Get-GitFetch -Force -Option AllScope
-function Get-GitCheckout { & git checkout $args }
+function Get-GitCheckout { & git branch | findstr $args | Foreach { git checkout $_.trim() } }
 New-Alias -Name co -Value Get-GitCheckout -Force -Option AllScope
 function Get-GitCheckoutDevelop { & git checkout develop $args }
 New-Alias -Name cod -Value Get-GitCheckoutDevelop -Force -Option AllScope
