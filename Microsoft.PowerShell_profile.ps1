@@ -38,6 +38,8 @@ function Get-GitCheckoutBranch { & git checkout -b $args }
 New-Alias -Name cob -Value Get-GitCheckoutBranch -Force -Option AllScope
 function Get-GitBranch { & git branch $args }
 New-Alias -Name b -Value Get-GitBranch -Force -Option AllScope
+function Get-GitBranchMerged{ & git branch --merged develop | Select-String -Pattern '^(?!.*(master|develop)).*$' }
+New-Alias -Name bm -Value Get-GitBranchMerged -Force -Option AllScope
 function Get-GitBranchAll { & git branch --all $args }
 New-Alias -Name gba -Value Get-GitBranchAll -Force -Option AllScope
 function Get-GitBranchDelete{ & git branch -D $args }
