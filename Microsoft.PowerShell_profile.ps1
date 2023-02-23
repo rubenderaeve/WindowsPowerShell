@@ -46,6 +46,8 @@ function Get-GitBranchDeleteString{ & git branch | findstr $args | Foreach { git
 New-Alias -Name bd -Value Get-GitBranchDeleteString -Force -Option AllScope
 function Get-GitBranchDeleteForceString{ & git branch | findstr $args | Foreach { git branch -D $_.trim() } }
 New-Alias -Name bD -Value Get-GitBranchDeleteForceString -Force -Option AllScope
+function Get-GitBranchDeleteMerged{ & git branch --merged develop | Select-String -Pattern '^(?!.*(master|develop)).*$' | ForEach-Object { git branch -d $_.ToString().Trim() } }
+New-Alias -Name bdm -Value Get-GitBranchDeleteMerged -Force -Option AllScope
 function Get-GitFlowFeatureStart{ & git flow feature start $args }
 New-Alias -Name gfs -Value Get-GitFlowFeatureStart -Force -Option AllScope
 function Get-GitRemote { & git remote -v $args }
