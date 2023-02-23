@@ -23,7 +23,7 @@ New-Alias -Name t -Value Get-GitTree -Force -Option AllScope
 function Get-GitPush { & git push $args }
 New-Alias -Name ps -Value Get-GitPush -Force -Option AllScope
 function Get-GitPushForce { & git push -f $args }
-New-Alias -Name psf -Value Get-GitPush -Force -Option AllScope
+New-Alias -Name psf -Value Get-GitPushForce -Force -Option AllScope
 function Get-GitPushOrigin { & git push --set-upstream origin $(git rev-parse --abbrev-ref HEAD) $args }
 New-Alias -Name pso -Value Get-GitPushOrigin -Force -Option AllScope
 function Get-GitPull { & git pull $args }
