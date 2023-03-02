@@ -91,7 +91,7 @@ New-Alias -Name gres -Value Get-GitRestore -Force -Option AllScope
 function Get-GitRestoreStaged { & git restore --staged  $args }
 New-Alias -Name gress -Value Get-GitRestoreStaged -Force -Option AllScope
 function Get-GitSubModuleUpdateInite { & git submodule update --init  $args }
-New-Alias -Name gsubui -Value Get-GitSubModuleUpdateInite -Force -Option AllScope
+New-Alias -Name sui -Value Get-GitSubModuleUpdateInite -Force -Option AllScope
 function Get-GitAddCommitAmendPushForce { & git add --all; git commit --amend --no-edit; git push -f }
 New-Alias -Name acp -Value Get-GitAddCommitAmendPushForce -Force -Option AllScope
 function Get-DotnetFormat { & dotnet format $args }
