@@ -18,8 +18,6 @@ function Get-GitAddAll { & git add --all $args }
 New-Alias -Name ga -Value Get-GitAddAll -Force -Option AllScope
 function Get-GitAdd { & git add $args }
 New-Alias -Name gad -Value Get-GitAdd -Force -Option AllScope
-function Get-GitTree { & git log --graph --oneline --decorate $args }
-New-Alias -Name t -Value Get-GitTree -Force -Option AllScope
 function Get-GitPush { & git push $args }
 New-Alias -Name ps -Value Get-GitPush -Force -Option AllScope
 function Get-GitPushForce { & git push -f $args }
@@ -100,6 +98,8 @@ function Get-DotnetFormat { & dotnet format $args }
 New-Alias -Name df -Value Get-DotnetFormat -Force -Option AllScope
 function Get-GitLog { & git log --graph --full-history --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' $args }
 New-Alias -Name lg -Value Get-GitLog -Force -Option AllScope
+function Get-GitTree { & git log --graph --oneline --decorate $args }
+New-Alias -Name t -Value Get-GitTree -Force -Option AllScope
 
 Set-PSReadlineOption -EditMode vi
 Set-PSReadlineOption -ViModeIndicator Prompt
