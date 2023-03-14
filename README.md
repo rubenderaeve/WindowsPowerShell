@@ -1,4 +1,4 @@
 # PowerShell
 Personal PowerShell profile
 
-This repo is a backup for my personal powershell profile
+This repo is my personal powershell profile
