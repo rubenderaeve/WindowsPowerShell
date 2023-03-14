@@ -36,6 +36,8 @@ function Get-GitCheckoutDevelop { & git checkout develop $args }
 New-Alias -Name cod -Value Get-GitCheckoutDevelop -Force -Option AllScope
 function Get-GitCheckoutBranch { & git checkout -b $args }
 New-Alias -Name cob -Value Get-GitCheckoutBranch -Force -Option AllScope
+function Get-GitCheckoutMostRecentBranch{ & git branch --sort=-committerdate | Select-Object -first 1 | ForEach-Object { git checkout $_.trim() } }
+New-Alias -Name com -Value Get-GitCheckoutMostRecentBranch -Force -Option AllScope
 function Get-GitBranch { & git branch $args }
 New-Alias -Name b -Value Get-GitBranch -Force -Option AllScope
 function Get-GitBranchMerged{ & git branch --merged develop | Select-String -Pattern '^(?!.*(master|develop)).*$' }
