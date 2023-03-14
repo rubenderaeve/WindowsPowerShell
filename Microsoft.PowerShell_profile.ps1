@@ -3,8 +3,8 @@
 Import-Module PSReadLine
 Import-Module -Name Terminal-Icons
 
-oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\zash.omp.json" | Invoke-Expression;
-# oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\zash.omp.json" | Invoke-Expression
+# oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh)\themes\zash.omp.json" | Invoke-Expression;
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\zash.omp.json" | Invoke-Expression
 
 . $PSScriptRoot\profile_alias.ps1
 
