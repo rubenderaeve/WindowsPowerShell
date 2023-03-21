@@ -7,6 +7,8 @@ New-Alias -Name gs -Value Get-GitStatus -Force -Option AllScope
 # commit
 function Get-GitCommit { & git commit -ev $args }
 New-Alias -Name c -Value Get-GitCommit -Force -Option AllScope
+function Get-GitCommitSign { & git commit -S -ev $args }
+New-Alias -Name cs -Value Get-GitCommitSign -Force -Option AllScope
 function Get-GitCommitAmendNoEdit { & git commit -v --amend --no-edit $args }
 New-Alias -Name cam -Value Get-GitCommitAmendNoEdit -Force -Option AllScope
 
