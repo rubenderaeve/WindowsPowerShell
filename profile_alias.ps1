@@ -134,3 +134,8 @@ New-Alias -Name t -Value Get-GitTree -Force -Option AllScope
 function Get-DotnetFormat { & dotnet format $args }
 New-Alias -Name df -Value Get-DotnetFormat -Force -Option AllScope
 
+# tea
+function Get-TeaPr {
+  $Title = git show -s --format=%s
+  & tea pulls create --base develop --title $Title $args }
+New-Alias -Name tp -Value Get-TeaPr -Force -Option AllScope
