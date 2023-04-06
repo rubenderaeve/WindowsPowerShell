@@ -122,6 +122,8 @@ New-Alias -Name gress -Value Get-GitRestoreStaged -Force -Option AllScope
 # submodule
 function Get-GitSubModuleUpdateInite { & git submodule update --init  $args }
 New-Alias -Name sui -Value Get-GitSubModuleUpdateInite -Force -Option AllScope
+function Get-GitSubResetHard { & git submodule foreach --recursive git reset --hard  $args }
+New-Alias -Name srh -Value Get-GitSubResetHard -Force -Option AllScope
 
 # log
 function Get-GitLog { & git log --graph --full-history --all --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' $args }
