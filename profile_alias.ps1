@@ -132,7 +132,7 @@ function Get-GitTree { & git log --graph --oneline --decorate $args }
 New-Alias -Name t -Value Get-GitTree -Force -Option AllScope
 
 #clone
-function Get-GitCloneRecurse { & git clone --recurse-submodules -j8 $args }
+function Get-GitCloneRecurse { & git clone --recurse-submodules --remote-submodules -j8 $args }
 New-Alias -Name gcr -Value Get-GitCloneRecurse -Force -Option AllScope
 
 # dotnet
