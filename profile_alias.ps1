@@ -43,8 +43,10 @@ function Get-GitDiffCached { & git diff -M --cached $args }
 New-Alias -Name gdc -Value Get-GitDiffCached -Force -Option AllScope
 
 # checkout
-function Get-GitCheckout { & git branch | findstr $args | Foreach { git checkout $_.trim() } }
-New-Alias -Name co -Value Get-GitCheckout -Force -Option AllScope
+function Get-GitCheckout { & git checkout $args }
+New-Alias -Name gco -Value Get-GitCheckout -Force -Option AllScope
+function Get-GitCheckoutExp { & git branch | findstr $args | Foreach { git checkout $_.trim() } }
+New-Alias -Name co -Value Get-GitCheckoutExp -Force -Option AllScope
 function Get-GitCheckoutDevelop { & git checkout develop $args }
 New-Alias -Name cod -Value Get-GitCheckoutDevelop -Force -Option AllScope
 function Get-GitCheckoutBranch { & git checkout -b $args }
@@ -80,6 +82,8 @@ New-Alias -Name r -Value Get-GitRemote -Force -Option AllScope
 # cherry-pick
 function Get-GitCherryPick { & git cherry-pick $args }
 New-Alias -Name gch -Value Get-GitCherryPick -Force -Option AllScope
+function Get-GitCherryPickContinue { & git cherry-pick --continue $args }
+New-Alias -Name gchc -Value Get-GitCherryPickContinue -Force -Option AllScope
 
 # rebase
 function Get-GitRebase { & git rebase $args }
