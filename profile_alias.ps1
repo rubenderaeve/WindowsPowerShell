@@ -148,3 +148,11 @@ function Get-TeaPr {
   $Title = git show -s --format=%s
   & tea pulls create --base develop --title $Title $args }
 New-Alias -Name tp -Value Get-TeaPr -Force -Option AllScope
+
+# cmake
+function Get-CMakeGenerate { & C:\wiki\generate.ps1 -workset (Split-Path $pwd -Parent)}
+New-Alias -Name g -Value Get-CMakeGenerate -Force -Option AllScope
+
+# open sln
+function Get-OpenSolution { & "C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\devenv.exe" Join-Path $pwd "bricscad\CMakeProjectFiles\vc142x64\bricscad.sln" }
+New-Alias -Name sln -Value Get-OpenSolution -Force -Option AllScope
