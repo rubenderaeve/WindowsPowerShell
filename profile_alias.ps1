@@ -154,5 +154,19 @@ function Get-CMakeGenerate { & C:\wiki\generate.ps1 -workset (Split-Path $pwd -P
 New-Alias -Name g -Value Get-CMakeGenerate -Force -Option AllScope
 
 # open sln
-function Get-OpenSolution { & "C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\devenv.exe" Join-Path $pwd "bricscad\CMakeProjectFiles\vc142x64\bricscad.sln" }
+function Get-OpenSolution { & "C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\devenv.exe" "$pwd\\bricscad\\CMakeProjectFiles\\vc142x64\\bricscad.sln" }
 New-Alias -Name sln -Value Get-OpenSolution -Force -Option AllScope
+
+# workset
+function Get-WorksetBranch { & C:\ps\worksetBranch.ps1 }
+New-Alias -Name wb -Value Get-WorksetBranch -Force -Option AllScope
+function Get-WorksetStatus { & C:\ps\worksetStatus.ps1 }
+New-Alias -Name ws -Value Get-WorksetStatus -Force -Option AllScope
+
+# redmine
+function Get-RedmineIssue { & C:\wiki\redmineIssue.ps1 }
+New-Alias -Name red -Value Get-RedmineIssue -Force -Option AllScope
+
+# build solution
+function Get-BuildSolution { & C:\wiki\buildSolution.ps1 }
+New-Alias -Name bld -Value Get-BuildSolution -Force -Option AllScope
