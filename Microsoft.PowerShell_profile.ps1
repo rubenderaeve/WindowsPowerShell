@@ -10,6 +10,9 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\zash.omp.json" | Invoke-Exp
 . $PSScriptRoot\save_in_history.ps1
 
 . $PSScriptRoot\profile_alias.ps1
+. $PSScriptRoot\git_alias.ps1
+. $PSScriptRoot\profile_alias.ps1
+. C:\vdev\alias\visual_studio_alias.ps1
 
 # Import the Chocolatey Profile that contains the necessary code to enable
 # tab-completions to function for `choco`.
@@ -20,3 +23,5 @@ $ChocolateyProfile = "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 if (Test-Path($ChocolateyProfile)) {
   Import-Module "$ChocolateyProfile"
 }
+
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
