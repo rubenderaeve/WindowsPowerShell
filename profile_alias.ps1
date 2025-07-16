@@ -1,4 +1,4 @@
-$env:PYTHONIOENCODING="utf-8"
+
 iex "$(thefuck --alias)"
 
 # tea
