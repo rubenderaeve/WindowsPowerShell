@@ -135,6 +135,10 @@ New-Alias -Name lg -Value Get-GitLog -Force -Option AllScope
 function Get-GitTree { & git log --graph --oneline --decorate $args }
 New-Alias -Name t -Value Get-GitTree -Force -Option AllScope
 
-#clone
+# clone
 function Get-GitCloneRecurse { & git clone --recurse-submodules --remote-submodules -j8 $args }
 New-Alias -Name gcr -Value Get-GitCloneRecurse -Force -Option AllScope
+
+# merge
+function Get-GitMergeSquash { & git merge --squash origin/$args }
+New-Alias -Name gms -Value Get-GitMergeSquash -Force -Option AllScope
