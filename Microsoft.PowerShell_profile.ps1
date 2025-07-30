@@ -13,7 +13,6 @@ oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\zash.omp.json" | Invoke-Exp
 
 . $PSScriptRoot\profile_alias.ps1
 . $PSScriptRoot\git_alias.ps1
-. $PSScriptRoot\profile_alias.ps1
 
 # Check if the visual_studio_alias.ps1 file exists before loading it
 $visualStudioAliasPath = "C:\vdev\alias\visual_studio_alias.ps1"
